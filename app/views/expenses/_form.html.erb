@@ -1,0 +1,28 @@
+<%= form_with(model: expense, local: true) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :tipo %><br>
+      <%= form.select :tipo, Expense.tipos.keys %>
+
+    <%= form.label :date %>
+    <%= form.date_field :date, id: :expense_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :concept %>
+    <%= form.text_field :concept, id: :expense_concept %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.select :category, Expense.categories.keys %>
+  
+    <%= form.label :amount %>
+    <%= form.number_field :amount, id: :expense_amount %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
