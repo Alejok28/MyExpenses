@@ -3,14 +3,13 @@
 # Table name: expenses
 #
 #  id          :integer          not null, primary key
-#  tipo        :integer
 #  date        :date
 #  concept     :string
-#  category    :integer
 #  amount      :decimal(, )
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :integer
+#  type_id     :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

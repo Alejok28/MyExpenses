@@ -13,3 +13,8 @@ home = Category.create(name: "Home")
 edication = Category.create(name: "Education")
 fun = Category.create(name: "Fun")
 travel = Category.create(name: "Travel")
+
+purchase = Type.create(name: "Purchase")
+withdrawal = Type.create(name: "Withdrawal")
+transfer = Type.create(name: "Transfer")
+payment = Type.create(name: "Payment")
