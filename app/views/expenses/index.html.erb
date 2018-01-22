@@ -33,29 +33,7 @@
 
       <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
-          <button type="button" class="btn btn-success pull-left" data-toggle="modal" data-target="#exampleModal">
-            <span class="glyphicon glyphicon-plus"></span> New Expense
-          </button>
-
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Expense</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <%= render 'form', expense: @expense %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a href= <%=new_expense_path%> class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
 
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">April 2016 <span class="caret"></span></button>
@@ -96,8 +74,8 @@
             <td class="text-right" style="width: 170px;">
               <div class="amount"><%=expense.amount%></div>
               <div class="actions">
-                <a href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                <a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                <a href=<%=edit_expense_path(expense)%>><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                <%= link_to "<span class='glyphicon glyphicon-trash'></span>Eliminar".html_safe, expense, method: :delete, data: { confirm: "Are you sure to delete this expense?" } %>
               </td>
             </tr>
 

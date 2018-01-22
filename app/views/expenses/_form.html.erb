@@ -1,28 +1,39 @@
 <%= form_with(model: expense, local: true) do |form| %>
+<% if expense.errors.any? %>
+     <div id="error_explanation">
+       <ul>
+         <% expense.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
 
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :tipo %><br>
-      <%= form.select :tipo, Expense.tipos.keys %>
-
+    <%= form.select :tipo, Expense.tipos.keys %>
+  </div>
+  <div class="form-group">
     <%= form.label :date %>
     <%= form.date_field :date, id: :expense_date %>
   </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :concept %>
     <%= form.text_field :concept, id: :expense_concept %>
   </div>
-
-  <div class="field">
+  <div class="form">
     <%= form.label :category %>
     <%= form.select :category, Expense.categories.keys %>
-  
+  </div>
+  <div class="form-group">
     <%= form.label :amount %>
     <%= form.number_field :amount, id: :expense_amount %>
   </div>
+</div>
+
 
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>
