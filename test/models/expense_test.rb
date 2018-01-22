@@ -2,14 +2,15 @@
 #
 # Table name: expenses
 #
-#  id         :integer          not null, primary key
-#  tipo       :integer
-#  date       :date
-#  concept    :string
-#  category   :integer
-#  amount     :decimal(, )
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  tipo        :integer
+#  date        :date
+#  concept     :string
+#  category    :integer
+#  amount      :decimal(, )
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :integer
 #
 
 require 'test_helper'

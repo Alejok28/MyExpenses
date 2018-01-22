@@ -4,7 +4,7 @@
       <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
       <div class="list-group filter-type">
 
-        <a href="/expenses" class="list-group-item">Purchase</a>
+        <a href="/expenses/:category" class="list-group-item">Purchase</a>
         <a href="#" class="list-group-item">Withdrawal</a>
         <!-- more transaction types -->
       </div>
@@ -71,7 +71,7 @@
                 <span class="concept"><%=expense.concept%></span>
               </div>
             </td>
-            <td class="category text-right"><%=expense.category%></td>
+            <td class="category text-right"><%=expense.category.name%></td>
             <td class="text-right" style="width: 170px;">
               <div class="amount"><%=expense.amount%></div>
               <div class="actions">
