@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
 
   def index
-    @expenses = Expense.order("date ASC")
+    @expenses = Expense.order("date ASC").category("%#{params[:category_id]}%").type("%#{params[:type_id]}%")
     @tab = :expenses
   end
 

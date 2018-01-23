@@ -3,16 +3,31 @@
     <div class="col-md-3">
       <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
       <div class="list-group filter-type">
-
-        <a href="/expenses/:category" class="list-group-item">Purchase</a>
-        <a href="#" class="list-group-item">Withdrawal</a>
-        <!-- more transaction types -->
+        <!-- <%= form_tag expenses_path, method: :get do %>
+        <div class="form-group">
+          <%= text_field_tag :concept, params[:concept], class: "form-control", placeholder: "Concepto" %>
+        </div>
+        <div class="form-group">
+          <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", params[:category_id]), prompt: "Categoría", class: "form-control" %>
+        </div>
+        <%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md" %>
+      <% end %> -->
+        <a href="/expenses?utf8=✓&type_id=1" class="list-group-item">Purchase</a>
+        <a href="/expenses?utf8=✓&type_id=2" class="list-group-item">Withdrawal</a>
+        <a href="/expenses?utf8=✓&type_id=3" class="list-group-item">Transfer</a>
+         <a href="/expenses?utf8=✓&type_id=4" class="list-group-item">Payment</a>
       </div>
 
       <h4 class="filter-header">Categoría <span>Selecciona para filtrar</span></h4>
       <div class="list-group filter-type">
-        <a href="#" class="list-group-item">Restaurants</a>
+        <a href="/expenses?utf8=✓&category_id=1" class="list-group-item">Restaurants</a>
+        <a href="/expenses?utf8=✓&category_id=2" class="list-group-item">Gocery</a>
         <a href="#" class="list-group-item">Car</a>
+        <a href="#" class="list-group-item">Services</a>
+        <a href="#" class="list-group-item">Home</a>
+        <a href="#" class="list-group-item">Education</a>
+        <a href="#" class="list-group-item">Fun</a>
+        <a href="#" class="list-group-item">Travel</a>
         <!-- more categories  -->
       </div>
     </div>
