@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   #     resources :expenses
   #   end
   # end
-  resources :dashboard, only:[:index]
+  namespace :dashboard do
+    get 'last_six_months'
+  end
   resources :expenses
 end

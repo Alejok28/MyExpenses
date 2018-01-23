@@ -18,3 +18,9 @@ purchase = Type.create(name: "Purchase")
 withdrawal = Type.create(name: "Withdrawal")
 transfer = Type.create(name: "Transfer")
 payment = Type.create(name: "Payment")
+
+
+50.times do
+  Expense.create( date: Faker::Date.between(365.days.ago, Date.today), concept: Faker::Lorem.sentence, amount: Faker::Number.decimal(5, 1), category_id:
+Faker::Number.between(1, 8), type_id: Faker::Number.between(1, 4))
+end

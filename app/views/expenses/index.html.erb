@@ -3,15 +3,7 @@
     <div class="col-md-3">
       <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
       <div class="list-group filter-type">
-        <!-- <%= form_tag expenses_path, method: :get do %>
-        <div class="form-group">
-          <%= text_field_tag :concept, params[:concept], class: "form-control", placeholder: "Concepto" %>
-        </div>
-        <div class="form-group">
-          <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", params[:category_id]), prompt: "Categoría", class: "form-control" %>
-        </div>
-        <%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md" %>
-      <% end %> -->
+
         <a href="/expenses?utf8=✓&type_id=1" class="list-group-item">Purchase</a>
         <a href="/expenses?utf8=✓&type_id=2" class="list-group-item">Withdrawal</a>
         <a href="/expenses?utf8=✓&type_id=3" class="list-group-item">Transfer</a>
@@ -49,7 +41,9 @@
 
       <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
-          <a href= <%=new_expense_path%> class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
+        <%= link_to '<span class="glyphicon glyphicon-plus"></span> New Expense'.html_safe, new_expense_path, remote: true, class: "btn btn-success" %>
+
+
 
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">April 2016 <span class="caret"></span></button>
@@ -90,7 +84,9 @@
             <td class="text-right" style="width: 170px;">
               <div class="amount"><%=expense.amount%></div>
               <div class="actions">
-                <a href=<%=edit_expense_path(expense)%>><span class="glyphicon glyphicon-edit"></span> Edit</a>
+
+                <%= link_to "<span class='glyphicon glyphicon-edit'></span>Edit".html_safe, edit_expense_path(expense), remote: true%>
+
                 <%= link_to "<span class='glyphicon glyphicon-trash'></span>Eliminar".html_safe, expense, method: :delete, data: { confirm: "Are you sure to delete this expense?" } %>
               </td>
             </tr>
