@@ -22,7 +22,6 @@
           <div class="form">
             <%= f.label :category_id %>
             <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name", params[:category_id]), class: "form-control" %>
-
           </div>
           <div class="form-group">
             <%= f.label :amount %>

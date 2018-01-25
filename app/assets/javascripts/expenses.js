@@ -1,3 +1,32 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready(function(){
+  var category = '';
+  var type = '';
+
+
+  $('.filter-type .list-group-item').on('click', function(){
+    $('.filter-type .list-group-item').removeClass('active');
+    $(this).toggleClass('active');
+    type = $(this).attr('id');
+    $.ajax({
+      method: "GET",
+      url: url_request(),
+      dataType: 'script'
+    });
+  })
+
+  $('.filter-category .list-group-item').on('click', function(){
+    $('.filter-category .list-group-item').removeClass('active');
+    $(this).toggleClass('active');
+
+     category = $(this).attr('id');
+     $.ajax({
+       method: "GET",
+       url: url_request(),
+       dataType: 'script'
+     });
+  })
+  function url_request(){
+    return "/expenses/?utf8=✓&type_id=" + type + "&category_id=" + category;
+  }
+
+})

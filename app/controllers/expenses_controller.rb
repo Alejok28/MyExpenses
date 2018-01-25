@@ -1,12 +1,19 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: [:show, :edit, :update, :destroy]
+  before_action :filter
+  def filter
+    @expenses = Expense.order("date ASC").by_type("%#{params[:type_id]}%").by_category("%#{params[:category_id]}%")
+  end
 
   def index
-    @expenses = Expense.order("date ASC").category("%#{params[:category_id]}%").type("%#{params[:type_id]}%")
     @tab = :expenses
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
+    @expense = Expense.find(params[:id])
   end
 
   def new
@@ -19,7 +26,6 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = Expense.new(expense_params)
-
     respond_to do |format|
       if @expense.save
         format.html { redirect_to index, notice: 'Expense was successfully created.' }
@@ -32,6 +38,7 @@ class ExpensesController < ApplicationController
   end
 
   def update
+    @expense = Expense.find(params[:id])
     respond_to do |format|
       if @expense.update(expense_params)
         format.html { redirect_to index, notice: 'Expense was successfully updated.' }
@@ -44,6 +51,7 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
+    @expense = Expense.find(params[:id])
     @expense.destroy
     respond_to do |format|
       format.html { redirect_to expenses_url, notice: 'Expense was successfully destroyed.' }
@@ -52,10 +60,6 @@ class ExpensesController < ApplicationController
   end
 
   private
-    def set_expense
-      @expense = Expense.find(params[:id])
-    end
-
     def expense_params
       params.require(:expense).permit(:type_id, :date, :concept, :category_id, :amount)
     end

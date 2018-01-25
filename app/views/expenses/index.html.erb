@@ -3,26 +3,27 @@
     <div class="col-md-3">
       <h4 class="filter-header">Transaction Type <span>Choose to filter</span></h4>
       <div class="list-group filter-type">
-
-        <a href="/expenses?utf8=✓&type_id=1" class="list-group-item">Purchase</a>
-        <a href="/expenses?utf8=✓&type_id=2" class="list-group-item">Withdrawal</a>
-        <a href="/expenses?utf8=✓&type_id=3" class="list-group-item">Transfer</a>
-         <a href="/expenses?utf8=✓&type_id=4" class="list-group-item">Payment</a>
+        <li class="list-group-item active" id="">All</li>
+        <li class="list-group-item" id="1">Purchase</li>
+        <li class="list-group-item" id="2">Withdrawal</li>
+        <li class="list-group-item" id="3">Transfer</li>
+        <li class="list-group-item" id="4">Payment</li>
       </div>
 
-      <h4 class="filter-header">Categoría <span>Selecciona para filtrar</span></h4>
-      <div class="list-group filter-type">
-        <a href="/expenses?utf8=✓&category_id=1" class="list-group-item">Restaurants</a>
-        <a href="/expenses?utf8=✓&category_id=2" class="list-group-item">Gocery</a>
-        <a href="#" class="list-group-item">Car</a>
-        <a href="#" class="list-group-item">Services</a>
-        <a href="#" class="list-group-item">Home</a>
-        <a href="#" class="list-group-item">Education</a>
-        <a href="#" class="list-group-item">Fun</a>
-        <a href="#" class="list-group-item">Travel</a>
-        <!-- more categories  -->
+      <h4 class="filter-header">Categoría <span>Choose to filter</span></h4>
+      <div class="list-group filter-category">
+        <li class="list-group-item active" id="">All</li>
+        <li class="list-group-item" id="1">Restaurants</li>
+        <li class="list-group-item" id="2">Gocery</li>
+        <li class="list-group-item" id="3">Car</li>
+        <li class="list-group-item" id="4">Services</li>
+        <li class="list-group-item" id="5">Home</li>
+        <li class="list-group-item" id="6">Education</li>
+        <li class="list-group-item" id="7">Fun</li>
+        <li class="list-group-item" id="8">Travel</li>
       </div>
     </div>
+
     <div class="col-md-9 index-data">
       <div class="row" style="margin-top: 10px;">
         <div class="summary-box col-md-4 text-center">
@@ -42,16 +43,9 @@
       <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
         <%= link_to '<span class="glyphicon glyphicon-plus"></span> New Expense'.html_safe, new_expense_path, remote: true, class: "btn btn-success" %>
-
-
-
           <h4 class="dropdown pull-right">
-            <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">April 2016 <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-              <li role="presentation"><a href="#">April 2016</a></li>
-              <li role="presentation"><a href="#">March 2016</a></li>
-              <!-- more months -->
-            </ul>
+            <%= select_month(Date.today, field_name: 'start', prefix: 'timer') %>
+
           </h4>
         </div>
       </div>
@@ -84,14 +78,12 @@
             <td class="text-right" style="width: 170px;">
               <div class="amount"><%=expense.amount%></div>
               <div class="actions">
-
                 <%= link_to "<span class='glyphicon glyphicon-edit'></span>Edit".html_safe, edit_expense_path(expense), remote: true%>
-
                 <%= link_to "<span class='glyphicon glyphicon-trash'></span>Eliminar".html_safe, expense, method: :delete, data: { confirm: "Are you sure to delete this expense?" } %>
               </td>
             </tr>
-
           <% end %>
+
         </tbody>
       </table>
     </div>

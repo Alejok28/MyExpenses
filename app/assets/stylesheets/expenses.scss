@@ -14,7 +14,16 @@
   padding: 7px 15px;
 }
 
-a.list-group-item { color: #808487; }
+li.list-group-item {
+  color: #808487;
+  &:hover{
+    background-color: $gray-dark;
+  }
+}
+.active{
+  background-color: $brand-primary;
+  color: white;
+}
 
 .summary-box {
   padding: 10px;
