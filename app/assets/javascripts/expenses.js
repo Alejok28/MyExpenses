@@ -1,7 +1,15 @@
 $(document).ready(function(){
   var category = '';
   var type = '';
-
+  var month = '';
+  $('#timer_start').on('change', function(){
+    month = $(this).val();
+    $.ajax({
+      method: "GET",
+      url: url_request(),
+      dataType: 'script'
+    });
+  })
 
   $('.filter-type .list-group-item').on('click', function(){
     $('.filter-type .list-group-item').removeClass('active');
@@ -26,7 +34,7 @@ $(document).ready(function(){
      });
   })
   function url_request(){
-    return "/expenses/?utf8=✓&type_id=" + type + "&category_id=" + category;
+    return "/expenses/?utf8=✓&type_id=" + type + "&category_id=" + category + "&month=" + month;
   }
 
 })

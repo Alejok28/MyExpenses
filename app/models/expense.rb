@@ -17,6 +17,7 @@ class Expense < ApplicationRecord
   belongs_to :type
   validates :type_id, :category_id, :date, :concept, :amount, presence: true
 
-  scope :by_category, ->(cat) { where("category_id like ?", cat) }
-  scope :by_type, ->(typ) { where("type_id like ?", typ) }
+  scope :by_category, ->(category) { where("category_id like ?", category) }
+  scope :by_type, ->(type) { where("type_id like ?", type) }
+
 end
