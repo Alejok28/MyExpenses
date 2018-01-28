@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   before_action :filter
   def filter
-    @expenses = Expense.order("date ASC").by_type("%#{params[:type_id]}%").by_category("%#{params[:category_id]}%")
+    @expenses = Expense.order("date ASC").by_type(params[:type_id]).by_category(params[:category_id]).by_month(params[:date])
   end
 
   def index
@@ -11,7 +11,6 @@ class ExpensesController < ApplicationController
       format.js
     end
   end
-
 
   def show
     @expense = Expense.find(params[:id])

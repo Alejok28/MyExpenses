@@ -1,9 +1,10 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
+
   var category = '';
   var type = '';
-  var month = '';
+  var date = '';
   $('#timer_start').on('change', function(){
-    month = $(this).val();
+    date = $(this).val();
     $.ajax({
       method: "GET",
       url: url_request(),
@@ -34,7 +35,6 @@ $(document).ready(function(){
      });
   })
   function url_request(){
-    return "/expenses/?utf8=✓&type_id=" + type + "&category_id=" + category + "&month=" + month;
+    return "/expenses/?utf8=✓&type_id=" + type + "&category_id=" + category + "&date=" + date;
   }
-
 })

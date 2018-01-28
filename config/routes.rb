@@ -9,5 +9,4 @@ Rails.application.routes.draw do
     get 'last_six_months'
   end
   resources :expenses
-  # get '/search', to: 'search#index', as: 'search_expense'
 end
