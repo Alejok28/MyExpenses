@@ -68,3 +68,9 @@ li.list-group-item {
 
   tr:hover .actions a { visibility: visible; }
 }
+select{
+  background-color: $gray;
+  padding: 10px;
+  height: 30px;
+
+}

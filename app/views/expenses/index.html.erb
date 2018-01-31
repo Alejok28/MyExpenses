@@ -78,7 +78,7 @@
               <div class="amount"><%=expense.amount%></div>
               <div class="actions">
                 <%= link_to "<span class='glyphicon glyphicon-edit'></span>Edit".html_safe, edit_expense_path(expense), remote: true%>
-                <%= link_to "<span class='glyphicon glyphicon-trash'></span>Eliminar".html_safe, expense, method: :delete, data: { confirm: "Are you sure to delete this expense?" } %>
+                <%= link_to "<span class='glyphicon glyphicon-trash'></span>Delete".html_safe, expense, method: :delete, data: { confirm: "Are you sure to delete this expense?" } %>
               </td>
             </tr>
           <% end %>

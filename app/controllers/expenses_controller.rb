@@ -28,10 +28,11 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to index, notice: 'Expense was successfully created.' }
+        # format.html { redirect_to index, notice: 'Expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
+        format.js
       else
-        format.html { render :new }
+        # format.html { render :new }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
     end

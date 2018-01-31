@@ -1,0 +1,8 @@
+<% if @expense.errors.empty? %>
+  $('table tbody').html(' <%= j render "filteredexpenses", expense: @expense %>');
+
+  $('#expense-modal').modal('hide');
+  $('#notice').html('<button type="button" class="close" data-dismiss="alert"  aria-label="Close"><span aria-hidden="true">&times;</span></button><p class="notice">Expense was successfully created.</p>').show();
+<% else %>
+  alert('<%= @expense.errors.full_messages[0] %>');
+<% end %>

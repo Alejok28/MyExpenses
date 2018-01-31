@@ -31,9 +31,21 @@
         </div>
       </div>
     </nav>
+    <%if notice %>
+      <div class="notice alert-growl alert alert-success alert-dismissible" role="alert" id="notice">
+        <button type="button" class="close" data-dismiss="alert"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
 
+    <%if alert %>
+      <div class="notice alert-growl alert alert-success alert-dismissible" role="alert" id="alert">
+        <button type="button" class="close" data-dismiss="alert"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
     <%= yield %>
-    
+
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js">
 
     </script>
