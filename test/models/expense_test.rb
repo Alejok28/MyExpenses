@@ -40,11 +40,11 @@ class ExpenseTest < ActiveSupport::TestCase
   # SCOPES
   test "by_category scope only returns Expenses with that category" do
     expenses = Expense.by_category(1)
-    assert_equal 2, expenses.length
+    assert_equal 1, expenses.length
   end
   test "by_type scope only returns Expenses with that type" do
     expenses = Expense.by_type(1)
-    assert_equal 2, expenses.length
+    assert_equal 1, expenses.length
   end
 
 

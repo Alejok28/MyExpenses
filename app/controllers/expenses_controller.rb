@@ -26,28 +26,17 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = Expense.new(expense_params)
+    @expense.save
     respond_to do |format|
-      if @expense.save
-        # format.html { redirect_to index, notice: 'Expense was successfully created.' }
-        format.json { render :show, status: :created, location: @expense }
-        format.js
-      else
-        # format.html { render :new }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
-      end
+      format.js
     end
   end
 
   def update
     @expense = Expense.find(params[:id])
+    @expense.update(expense_params)
     respond_to do |format|
-      if @expense.update(expense_params)
-        format.html { redirect_to index, notice: 'Expense was successfully updated.' }
-        format.json { render :show, status: :ok, location: @expense }
-      else
-        format.html { render :edit }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
-      end
+      format.js
     end
   end
 
@@ -55,7 +44,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to expenses_url, notice: 'Expense was successfully destroyed.' }
+      format.html { redirect_to expenses_url, notice: "The #{@expense.type.name} #{@expense.concept} for #{@expense.amount} on #{@expense.date} was successfully delete." }
       format.json { head :no_content }
     end
   end
