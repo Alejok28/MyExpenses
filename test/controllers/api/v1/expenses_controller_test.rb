@@ -7,79 +7,65 @@ module Api
         @expense = expenses(:one)
       end
 
-      test "should get index" do
-        get expenses_url
+      test "should get index in json format" do
+        get api_v1_expenses_url
         assert_response :success
       end
 
-      test "should get index in js format" do
-        get expenses_url, xhr: true
-        assert_equal "text/javascript", @response.content_type
-      end
-
-      test "should show expense" do
-        get expense_url(@expense)
+      test "should show expense in json format" do
+        get api_v1_expenses_url(@expense)
         assert_response :success
       end
 
-      test "should get new" do
-        get new_expense_url, xhr: true
-        assert_equal "text/javascript", @response.content_type
-      end
-
-      test "should get edit" do
-        get edit_expense_url(@expense), xhr: true
-        assert_response :success
-      end
-
-      test "should create expense" do
+      test "should create expense in json format" do
         assert_difference 'Expense.count', 1 do
-          post expenses_url, params: { expense: { amount: 2345, category_id: 1, concept: 'concept', date: Date.today, type_id: 1 } }, xhr: true
+          post api_v1_expenses_url, params: { expense: { amount: 2345, category_id: 1, concept: 'Created concept', date: Date.today, type_id: 1 } }
         end
         assert_response :success
-        assert_match "The MyString concept for $2345.0 on #{Date.today} was successfully created.", @response.body
+        assert_equal 2345.0, Expense.last.amount
+        assert_equal 1, Expense.last.category_id
+        assert_equal 'Created concept', Expense.last.concept
+        assert_equal Date.today, Expense.last.date
+        assert_equal 1, Expense.last.type_id
       end
 
-      test "should update expense amount" do
+      test "should update expense amount in json format" do
         assert_difference 'Expense.count', 0 do
-          patch expense_url(@expense), params: { expense: { amount: 11.1} }, xhr: true
+          patch api_v1_expense_url(@expense), params: { expense: { amount: 11.1} }
         end
         assert_response :success
-        assert_match "Expense was successfully edited.", @response.body
         assert_equal 11.1, Expense.last.amount
       end
 
-      test "should update expense category" do
-        patch expense_url(@expense), params: { expense: {category: 1 } }, xhr: true
+      test "should update expense category  in json format" do
+        patch api_v1_expense_url(@expense), params: { expense: {category: 1 } }
         assert_response :success
         assert_equal "MyString", Expense.last.category.name
       end
 
-      test "should update expense concept" do
-        patch expense_url(@expense), params: { expense: { concept: "Edited concept" } }, xhr: true
+      test "should update expense concept api_v1_expense_url" do
+        patch api_v1_expense_url(@expense), params: { expense: { concept: "Edited concept" } }
         assert_response :success
         assert_equal "Edited concept", Expense.last.concept
       end
 
-      test "should update expense date" do
-        patch expense_url(@expense), params: { expense: { date: Date.today } }, xhr: true
+      test "should update expense date api_v1_expense_url" do
+        patch api_v1_expense_url(@expense), params: { expense: { date: Date.today } }
         assert_response :success
         assert_equal Date.today, Expense.last.date
       end
 
-      test "should update expense type" do
-        patch expense_url(@expense), params: { expense: { type:1 } }, xhr: true
+      test "should update expense type api_v1_expense_url" do
+        patch api_v1_expense_url(@expense), params: { expense: { type:1 } }
         assert_response :success
         assert_equal "MyString", Expense.last.type.name
       end
 
-      test "should destroy expense" do
+      test "should destroy expense api_v1_expense_url" do
         assert_difference('Expense.count', -1) do
-          delete expense_url(@expense)
+          delete api_v1_expense_url(@expense)
         end
-        assert_response :found
-        assert_redirected_to expenses_url
-        assert_equal "The #{@expense.type.name} #{@expense.concept} for #{@expense.amount} on #{@expense.date} was successfully delete.", flash[:notice]
+        assert_response :success
       end
     end
   end

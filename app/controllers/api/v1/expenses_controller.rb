@@ -1,6 +1,7 @@
 module Api
   module V1
     class ExpensesController < ApplicationController
+       protect_from_forgery with: :null_session
       def index
         expenses = Expense.order("date ASC").by_type(params[:type_id]).by_category(params[:category_id])
         render json: expenses
@@ -11,10 +12,9 @@ module Api
         render json: expense
       end
 
-
       def create
         expense = Expense.new(expense_params)
-        if @expense.save
+        if expense.save
           render json: expense, status: 201
         else
           render json: {errors: expense.errors}, status: 422
@@ -23,7 +23,7 @@ module Api
 
       def update
         expense = Expense.find(params[:id])
-        if @expense.update(expense_params)
+        if expense.update(expense_params)
           render json: expense, status: 200
         else
           render json: {errors: expense.errors}, status: 422

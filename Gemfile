@@ -31,6 +31,7 @@ gem 'annotate'
 gem 'faker', '~> 1.6', '>= 1.6.6'
 gem "chartkick"
 gem 'groupdate'
+gem 'rack-cors'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
