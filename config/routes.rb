@@ -5,8 +5,8 @@ Rails.application.routes.draw do
       resources :expenses, except: [:new, :edit]
     end
   end
-  namespace :dashboard do
-    get 'last_six_months'
-  end
+
+  get 'dashboard', to: 'dashboard#index'
+  get 'category', to: 'dashboard#category'
   resources :expenses
 end

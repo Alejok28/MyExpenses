@@ -36,14 +36,4 @@ $(document).on('turbolinks:load',function(){
   function url_request(){
     return "/expenses/?utf8=✓&type_id=" + type + "&category_id=" + category + "&date=" + date;
   }
-
-  // $('form#new_expense').on('submit',function(e){
-  //   e.preventDefault();
-  //   var concept = $('input#expense_concept').val();
-  //   if (concept == '') {
-  //     $('input#expense_concept').next('p').text('Concept cant be blank');
-  //     $('input#expense_concept').parent('div').addClass('has-error');
-  //   }
-  // })
-
 })
