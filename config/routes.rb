@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'dashboard#index'
   get 'category', to: 'dashboard#category'
+  get 'months', to: 'dashboard#last_six_months'
   resources :expenses
 end
