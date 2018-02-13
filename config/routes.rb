@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
   get 'category', to: 'dashboard#category'
   get 'months', to: 'dashboard#last_six_months'
+  get 'daily', to: 'dashboard#by_day'
+  get 'accumulated', to: 'dashboard#accumulated'
   resources :expenses
 end

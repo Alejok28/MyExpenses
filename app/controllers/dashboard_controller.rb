@@ -57,4 +57,33 @@ class DashboardController < ApplicationController
     end
     render json: by_month
   end
+
+  def by_day
+    daily = []
+    d = Time.now.day
+    m = Time.now.month
+    y = Time.now.year
+
+    (0...d).each do |i|
+      daily[i] = {expense: Expense.where(date:("#{y}-#{m}-#{d-i}")).sum(:amount), day: d-i}
+    end
+    render json: daily
+  end
+
+  def accumulated
+    last_d = 1.month.ago.day
+    last_m = 1.month.ago.month
+    last_y = 1.month.ago.year
+    accumulated_actual = 0
+    accumulated_last = 0
+    total = []
+
+    (1..Time.now.end_of_month.day).each do |i|
+      accumulated_actual += Expense.where(date:("#{Time.now.year}-#{Time.now.month}-#{i}")).sum(:amount)
+      accumulated_last += Expense.where(date:("#{last_y}-#{last_m}-#{i}")).sum(:amount)
+      total[i-1] = {last: accumulated_last , actual: accumulated_actual,  day:i}
+    end
+    render json: total
+  end
+
 end

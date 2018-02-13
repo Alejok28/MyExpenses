@@ -2,19 +2,19 @@
   <div class="row">
     <div class="total-box col-md-3">
       <%= @today.sum(:amount) %> <br>
-      <span>HOY</span>
+      <span>Today</span>
     </div>
     <div class="total-box col-md-3">
       <%= @yesterday.sum(:amount) %> <br>
-      <span>AYER</span>
+      <span>Yesterday</span>
     </div>
     <div class="total-box col-md-3">
       <%= @this_month.sum(:amount) %> <br>
-      <span>ESTE MES</span>
+      <span>This Month</span>
     </div>
     <div class="total-box col-md-3">
       <%= @last_month.sum(:amount) %> <br>
-      <span>MES PASADO</span>
+      <span>Last Month</span>
     </div>
   </div>
 
@@ -22,7 +22,7 @@
   <div class="row" style="margin-top: 40px;">
     <div class="box col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Últimos 6 Meses</div>
+        <div class="panel-heading">Last 6 months</div>
         <div class="panel-body">
           <div id="last-six-month-expenses-chart" style="height: 250px;"></div>
 
@@ -32,7 +32,7 @@
     </div>
     <div class="box col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Por Día</div>
+        <div class="panel-heading">By Day</div>
         <div class="panel-body">
           <div id="daily-expenses-chart" style="height: 250px;"></div>
         </div>
@@ -43,7 +43,7 @@
   <div class="row" style="margin-top: 10px;">
     <div class="box col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Por Categoría</div>
+        <div class="panel-heading">By Category</div>
         <div class="panel-body">
           <div id="category-chart" style="height: 250px;"></div>
         </div>
@@ -51,7 +51,7 @@
     </div>
     <div class=" box col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Acumulado</div>
+        <div class="panel-heading">Accumulated</div>
         <div class="panel-body">
           <div id="month-acc" style="height: 250px;"></div>
         </div>
