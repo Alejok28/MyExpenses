@@ -1,10 +1,10 @@
 class DashboardController < ApplicationController
   def index
     @tab = :dashboard
-    @today = Expense.where("date = ?", Date.today)
-    @yesterday = Expense.where("date = ?", Date.yesterday)
-    @this_month = Expense.where(date: Time.now.beginning_of_month..Time.now.end_of_month)
-    @last_month = Expense.where(date: (Time.now.beginning_of_month - 1.month)..(Time.now.end_of_month-1.month))
+    @today = Expense.where("date = ?", Date.today).sum(:amount)
+    @yesterday = Expense.where("date = ?", Date.yesterday).sum(:amount)
+    @this_month = Expense.where(date: Time.now.beginning_of_month..Time.now.end_of_month).sum(:amount)
+    @last_month = Expense.where(date: (Time.now.beginning_of_month - 1.month)..(Time.now.end_of_month-1.month)).sum(:amount)
   end
 
   def category

@@ -30,7 +30,7 @@
     <div class="col-md-9 index-data" >
       <div class="row" style="margin-top: 10px;" id="index-values">
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value"><%=@expenses.sum(:amount)%></div>
+          <div class="summary-value"><%= Money.new(@expenses.sum(:amount)*100, "USD").format(:no_cents =>true) %></div>
           <div class="summary-label">Total</div>
         </diV>
         <div class="summary-box col-md-4 text-center">
@@ -38,7 +38,7 @@
           <div class="summary-label">Transactions</div>
         </div>
         <div class="summary-box col-md-4 text-center">
-          <div class="summary-value"><%=@expenses.average(:amount)%></div>
+          <div class="summary-value"><%= Money.new(@expenses.average(:amount)*100, "USD").format(:no_cents =>true) %></div>
           <div class="summary-label">Average</div>
         </div>
       </div>

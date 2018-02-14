@@ -1,20 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="total-box col-md-3">
-      <%= @today.sum(:amount) %> <br>
-      <span>Today</span>
+      <div class="value">
+        <%= Money.new(@today, "USD").format(:no_cents =>true) %>
+      </div>
+      <span>TODAY</span>
     </div>
     <div class="total-box col-md-3">
-      <%= @yesterday.sum(:amount) %> <br>
-      <span>Yesterday</span>
+      <div class="value">
+        <%= Money.new(@yesterday*100, "USD").format(:no_cents =>true ) %>
+      </div>
+      <span>YESTERDAY</span>
     </div>
     <div class="total-box col-md-3">
-      <%= @this_month.sum(:amount) %> <br>
-      <span>This Month</span>
+      <div class="value">
+        <%= Money.new(@this_month*100, "USD").format(:no_cents =>true) %>
+      </div>
+      <span>THIS MONTH</span>
     </div>
     <div class="total-box col-md-3">
-      <%= @last_month.sum(:amount) %> <br>
-      <span>Last Month</span>
+      <div class="value">
+        <%= Money.new(@last_month*100, "USD").format(:no_cents =>true ) %>
+      </div>
+      <span>LAST MONTH</span>
     </div>
   </div>
 
