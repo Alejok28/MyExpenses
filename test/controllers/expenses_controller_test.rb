@@ -30,7 +30,7 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
       post expenses_url, params: { expense: { amount: 2345, category_id: 1, concept: 'concept', date: Date.today, type_id: 1 } }, xhr: true
     end
     assert_response :success
-    assert_match "The MyString concept for $2345.0 on #{Date.today} was successfully created.", @response.body
+    assert_match "The Purchase concept for $2345.0 on #{Date.today} was successfully created.", @response.body
   end
 
   test "should update expense amount" do
@@ -45,7 +45,7 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
   test "should update expense category" do
     patch expense_url(@expense), params: { expense: {category: 1 } }, xhr: true
     assert_response :success
-    assert_equal "MyString", Expense.last.category.name
+    assert_equal "Restaurants", Expense.last.category.name
   end
 
   test "should update expense concept" do
@@ -63,7 +63,7 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
   test "should update expense type" do
     patch expense_url(@expense), params: { expense: { type:1 } }, xhr: true
     assert_response :success
-    assert_equal "MyString", Expense.last.type.name
+    assert_equal "Purchase", Expense.last.type.name
   end
 
   test "should destroy expense" do

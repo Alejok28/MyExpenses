@@ -12,8 +12,32 @@
 
 one:
   id: 1
-  name: MyString
+  name: Restaurants
 
 two:
   id: 2
-  name: MyString
+  name: Gocery
+
+three:
+  id: 3
+  name: Car
+
+four:
+  id: 4
+  name: Services
+
+five:
+  id: 5
+  name: Home
+
+six:
+  id: 6
+  name: Education
+
+seven:
+  id: 7
+  name: Fun
+
+eigth:
+  id: 8
+  name: Travel

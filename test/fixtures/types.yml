@@ -12,8 +12,16 @@
 
 one:
   id: 1
-  name: MyString
+  name: Purchase
 
 two:
   id: 2
-  name: MyString
+  name: Withdrawal
+
+three:
+  id: 3
+  name: Transfer
+
+four:
+  id: 4
+  name: Payment

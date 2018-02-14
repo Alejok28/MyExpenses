@@ -16,14 +16,28 @@
 
 one:
   type_id: 1
-  date: 2018-01-13
+  date: <%= Date.today %>
   concept: MyString
   category_id: 1
-  amount: 9.99
+  amount: 10
 
 two:
   type_id: 2
-  date: 2018-01-13
+  date: <%= Date.yesterday %>
   concept: MyString
   category_id: 2
-  amount: 9.99
+  amount: 11
+
+three:
+  type_id: 3
+  date: <%= Date.today - 1.month %>
+  concept: MyString
+  category_id: 3
+  amount: 120
+
+four:
+  type_id: 4
+  date: <%= Date.today - 2.month %>
+  concept: MyString
+  category_id: 4
+  amount: 150

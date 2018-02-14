@@ -1,7 +1,8 @@
 <% if @expense.errors.empty? %>
+  $('#expense-modal').modal('hide');
   $('table tbody').html(' <%= j render "filteredexpenses", expense: @expense %>');
   $('#index-values').html("<%= j render 'indexdatafiltered' %>");
-  $('#expense-modal').modal('hide');
+
   $('#notice').html('<button type="button" class="close" data-dismiss="alert"  aria-label="Close"><span aria-hidden="true">&times;</span></button><p class="notice">The <%=@expense.type.name%> <%=@expense.concept%> for $<%=@expense.amount%> on <%=@expense.date%> was successfully created.</p>').show();
 <% else %>
   $('div.modal-body').append('<%= @expense.errors.full_messages %>')

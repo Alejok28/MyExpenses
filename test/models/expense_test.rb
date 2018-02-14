@@ -47,5 +47,30 @@ class ExpenseTest < ActiveSupport::TestCase
     assert_equal 1, expenses.length
   end
 
+  # METHODS
+  test "categories should return the total expenses by category" do
+    expenses = Expense.categories
+    assert_equal 10, expenses[0][1]
+    assert_equal 11, expenses[1][1]
+  end
+
+  test "last_six_months should return amount by type in last 6 months" do
+    expenses = Expense.last_six_months
+    assert_equal 10, expenses[0][:purchase]
+    assert_equal 120, expenses[1][:transfer]
+    assert_equal 150, expenses[2][:payment]
+  end
+
+  test "daily should return total amount by day" do
+    expenses = Expense.daily
+    assert_equal 10, expenses[0][:expense]
+    assert_equal 11, expenses[1][:expense]
+  end
+
+  test "accumulated should return accumulated expenses" do
+    expenses = Expense.accumulated
+    assert_equal 21, expenses[-1][:actual]
+    assert_equal 120, expenses[-1][:last]
+  end
 
 end

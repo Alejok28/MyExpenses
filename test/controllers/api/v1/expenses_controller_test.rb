@@ -40,7 +40,7 @@ module Api
       test "should update expense category  in json format" do
         patch api_v1_expense_url(@expense), params: { expense: {category: 1 } }
         assert_response :success
-        assert_equal "MyString", Expense.last.category.name
+        assert_equal "Restaurants", Expense.last.category.name
       end
 
       test "should update expense concept api_v1_expense_url" do
@@ -58,7 +58,7 @@ module Api
       test "should update expense type api_v1_expense_url" do
         patch api_v1_expense_url(@expense), params: { expense: { type:1 } }
         assert_response :success
-        assert_equal "MyString", Expense.last.type.name
+        assert_equal "Purchase", Expense.last.type.name
       end
 
       test "should destroy expense api_v1_expense_url" do
