@@ -2,7 +2,7 @@
   <div class="row">
     <div class="total-box col-md-3">
       <div class="value">
-        <%= Money.new(@today, "USD").format(:no_cents =>true) %>
+        <%= Money.new(@today*100, "USD").format(:no_cents =>true) %>
       </div>
       <span>TODAY</span>
     </div>

@@ -91,7 +91,11 @@ class Expense < ApplicationRecord
     total = []
 
     (1..Time.now.end_of_month.day).each do |i|
-      accumulated_actual += Expense.where(date:("#{Time.now.year}-#{Time.now.month}-#{i}")).sum(:amount)
+      if i <= Time.now.day
+        accumulated_actual += Expense.where(date:("#{Time.now.year}-#{Time.now.month}-#{i}")).sum(:amount)
+      else
+        accumulated_actual=0
+      end
       accumulated_last += Expense.where(date:("#{last_y}-#{last_m}-#{i}")).sum(:amount)
       total[i-1] = {last: accumulated_last , actual: accumulated_actual,  day:i}
     end

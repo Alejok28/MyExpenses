@@ -5,11 +5,15 @@ $(document).on('turbolinks:load',function(){
 		animationEnabled: true,
 		theme: "dark2",
 		colorSet: "colors",
+		legend:{
+			fontSize:13
+	 	},
 		data: [{
 			type: "stackedColumn",
 			showInLegend: true,
 			// color: "#696661",
 			name: "Purchase",
+			labelFontSize: 13,
 			dataPoints: [
 				{ y: parseInt(values[5].purchase), label: values[5].month  },
 				{ y: parseInt(values[4].purchase), label: values[4].month  },
@@ -121,6 +125,9 @@ $(document).on('turbolinks:load',function(){
 			animationEnabled: true,
 			colorSet: "colors",
 			theme: "dark2",
+			legend:{
+				fontSize:13
+		 	},
 		axisX: {
 			interval: 5,
 		},
