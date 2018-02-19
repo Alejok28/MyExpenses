@@ -17,27 +17,27 @@
 one:
   type_id: 1
   date: <%= Date.today %>
-  concept: MyString
+  concept: concept1
   category_id: 1
   amount: 10
 
 two:
   type_id: 2
   date: <%= Date.yesterday %>
-  concept: MyString
+  concept: concept2
   category_id: 2
   amount: 11
 
 three:
   type_id: 3
   date: <%= Date.today - 1.month %>
-  concept: MyString
+  concept: concept3
   category_id: 3
   amount: 120
 
 four:
   type_id: 4
   date: <%= Date.today - 2.month %>
-  concept: MyString
+  concept: concept4
   category_id: 4
   amount: 150

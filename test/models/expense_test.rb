@@ -69,7 +69,7 @@ class ExpenseTest < ActiveSupport::TestCase
 
   test "accumulated should return accumulated expenses" do
     expenses = Expense.accumulated
-    assert_equal 21, expenses[-1][:actual]
+    assert_equal 21, expenses[Date.today.day-1][:actual]
     assert_equal 120, expenses[-1][:last]
   end
 
