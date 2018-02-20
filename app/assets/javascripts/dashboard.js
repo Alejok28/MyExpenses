@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load',function(){
 	// CanvasJS.addColorSet("colors",["#324D5C","#46B29D","#F0CA4D","#E37B40","#F53855"]);
-	$.getJSON("http://localhost:3000/months.json", function(values) {
+	$.getJSON("/months.json", function(values) {
 		var chart1 = new CanvasJS.Chart("last-six-month-expenses-chart", {
 		animationEnabled: true,
 		theme: "dark2",
@@ -69,7 +69,7 @@ $(document).on('turbolinks:load',function(){
 	chart1.render();
 	});
 
-	$.getJSON("http://localhost:3000/daily.json", function(values) {
+	$.getJSON("/daily.json", function(values) {
 		var dataPoints2 = [];
 		values.map(function(value){
 			dataPoints2.push({ y: parseInt(value.expense), x: value.day});
@@ -91,7 +91,7 @@ $(document).on('turbolinks:load',function(){
 
 	});
 
-	$.getJSON("http://localhost:3000/category.json", function(data) {
+	$.getJSON("/category.json", function(data) {
 		var dataPoints = [];
 		var categories = ["Restaurants", "Gocery", "Car", "Services", "Home", "Education", "Fun", "Travel"]
 		var i = 0;
@@ -114,7 +114,7 @@ $(document).on('turbolinks:load',function(){
 	    });
 	    chart3.render();
 	});
-	$.getJSON("http://localhost:3000/accumulated.json", function(values) {
+	$.getJSON("/accumulated.json", function(values) {
 		var dataPoints3 = [];
 		var dataPoints4 = [];
 		values.map(function(value){
