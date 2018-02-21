@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20180122173445) do
     t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
-    t.integer "type_id"
+    t.bigint "category_id"
+    t.bigint "type_id"
     t.index ["category_id"], name: "index_expenses_on_category_id"
     t.index ["type_id"], name: "index_expenses_on_type_id"
   end
@@ -39,4 +39,6 @@ ActiveRecord::Schema.define(version: 20180122173445) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "expenses", "categories"
+  add_foreign_key "expenses", "types"
 end
