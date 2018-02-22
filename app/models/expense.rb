@@ -18,8 +18,8 @@ class Expense < ApplicationRecord
   validates :type_id, :category_id, :date, :concept, :amount, presence: true
   validates :amount, numericality: true
 
-  scope :by_category, ->(category) { where("category_id like ?", "%#{category}%") }
-  scope :by_type, ->(type) { where("type_id like ?", "%#{type}%") }
+  scope :by_category, ->(category) { where(category_id: category) }
+  scope :by_type, ->(type) { where(type_id: type) }
   scope :by_month, ->(date) { where(date: "#{date}-01".to_date.."#{date}-01".to_date.end_of_month) }
 
   def self.categories

@@ -1,7 +1,9 @@
 $(document).on('turbolinks:load',function(){
+
   var category = '';
   var type = '';
-  var date = '';
+  var date = $('#timer_start').val();
+
   $('#timer_start').on('change', function(){
     date = $(this).val();
     $.ajax({
@@ -34,6 +36,14 @@ $(document).on('turbolinks:load',function(){
      });
   })
   function url_request(){
-    return "/expenses/?utf8=✓&type_id=" + type + "&category_id=" + category + "&date=" + date;
+    if (type == '' && category == '') {
+      return "/expenses/?utf8=✓&date=" + date;
+    }else if (type == '') {
+      return "/expenses/?utf8=✓&category_id=" + category + "&date=" + date;
+    }else if (category == '') {
+      return "/expenses/?utf8=✓&type_id=" + type + "&date=" + date;
+    }else {
+      return "/expenses/?utf8=✓&type_id=" + type + "&category_id=" + category + "&date=" + date;
+    }
   }
 })
