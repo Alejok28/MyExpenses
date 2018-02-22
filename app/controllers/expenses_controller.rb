@@ -2,7 +2,11 @@ class ExpensesController < ApplicationController
   before_action :filter
   def filter
     @expenses = Expense.order("date ASC")
-    @expenses = @expenses.by_month(params[:date]) if params[:date]
+    if params[:date]
+      @expenses = @expenses.by_month(params[:date])
+    else
+      @expenses = @expenses.by_month("#{Date.today.year}-#{Date.today.month}")
+    end
     @expenses = @expenses.by_type(params[:type_id]) if params[:type_id]
     @expenses = @expenses.by_category(params[:category_id]) if params[:category_id]
 
