@@ -1,10 +1,23 @@
 <% if @expense.errors.empty? %>
   $('#expense-modal').modal('hide');
-  $('table tbody').html(' <%= j render "filteredexpenses", expense: @expense %>');
-  $('#index-values').html("<%= j render 'indexdatafiltered' %>");
+  $('table tbody').html(' <%= j render "filtered_expenses", expense: @expense %>');
+  $('#index-values').html("<%= j render 'index_data_filtered' %>");
 
   $('#notice').html('<button type="button" class="close" data-dismiss="alert"  aria-label="Close"><span aria-hidden="true">&times;</span></button><p class="notice">The <%=@expense.type.name%> <%=@expense.concept%> for $<%=@expense.amount%> on <%=@expense.date%> was successfully created.</p>').show();
 <% else %>
-  $('div.modal-body').append('<%= @expense.errors.full_messages %>')
-
+  $('div').removeClass('has-error');
+  $('p').text('');
+  var date = $('input#expense_date').val();
+  var concept = $('input#expense_concept').val();
+  var amount = $('input#expense_amount').val();
+  if (date === '') {
+    $('input#expense_date').next('p').text('Date cant be blank');
+    $('input#expense_date').parent().addClass('has-error');
+  } if (concept === '') {
+    $('input#expense_concept').next('p').text('Concept cant be blank');
+    $('input#expense_concept').parent().addClass('has-error');
+  } if (amount === '') {
+    $('input#expense_amount').next('p').text('Amount cant be blank');
+    $('input#expense_amount').parent().addClass('has-error');
+  }
 <% end %>
