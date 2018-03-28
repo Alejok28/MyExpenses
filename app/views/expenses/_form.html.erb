@@ -7,28 +7,40 @@
       </div>
       <%= form_for @expense, remote: true do |f| %>
         <div class="modal-body">
-          <div class="form-group">
-            <%= f.label :type_id %><br>
-            <%= f.select :type_id, options_from_collection_for_select(Type.all, "id", "name", @expense.type_id), class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :date %>
-            <%= f.date_field :date, value:@expense.date ,id: :expense_date, class: "form-control"  %>
-            <p class="help-block"></p>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label :type_id %><br>
+                <%= f.select :type_id, options_from_collection_for_select(Type.all, "id", "name", @expense.type_id), class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label :date %>
+                <%= f.date_field :date, value:@expense.date ,id: :expense_date, class: "form-control"  %>
+                <p class="help-block"></p>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <%= f.label :concept %>
             <%= f.text_field :concept, id: :expense_concept, class: "form-control"  %>
             <p class="help-block"></p>
           </div>
-          <div class="form">
-            <%= f.label :category_id %>
-            <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name", @expense.category_id), class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :amount %>
-            <%= f.number_field :amount, value: number_to_currency(f.object.amount.to_f, delimiter: '', unit: ''), step: :any, class: "form-control" %>
-            <p class="help-block"></p>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form">
+                <%= f.label :category_id %>
+                <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name", @expense.category_id), class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label :amount %>
+                <%= f.number_field :amount, value: number_to_currency(f.object.amount.to_f, delimiter: '', unit: ''), step: :any, class: "form-control" %>
+                <p class="help-block"></p>
+              </div>
+            </div>
           </div>
         </div>
 
