@@ -11,6 +11,7 @@ $(document).on('turbolinks:load',function(){
       url: url_request(),
       dataType: 'script'
     });
+    history.pushState(null, '', url_request());
   })
 
   $('.filter-type .list-group-item').on('click', function(){
@@ -22,6 +23,8 @@ $(document).on('turbolinks:load',function(){
       url: url_request(),
       dataType: 'script'
     });
+
+    history.pushState(null, '', url_request());
   })
 
   $('.filter-category .list-group-item').on('click', function(){
@@ -34,6 +37,7 @@ $(document).on('turbolinks:load',function(){
        url: url_request(),
        dataType: 'script'
      });
+     history.pushState(null, '', url_request());
   })
   function url_request(){
     if (type == '' && category == '') {
