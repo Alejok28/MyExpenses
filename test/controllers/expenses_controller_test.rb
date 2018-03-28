@@ -30,7 +30,6 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
       post expenses_url, params: { expense: { amount: 2345, category_id: 1, concept: 'concept', date: Date.today, type_id: 1 } }, xhr: true
     end
     assert_response :success
-    assert_match "The Purchase concept for $2345.0 on #{Date.today} was successfully created.", @response.body
   end
 
   test "should update expense amount" do
@@ -38,7 +37,6 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
       patch expense_url(@expense), params: { expense: { amount: 11.1} }, xhr: true
     end
     assert_response :success
-    assert_match "Expense was successfully edited.", @response.body
     assert_equal 11.1, Expense.last.amount
   end
 
