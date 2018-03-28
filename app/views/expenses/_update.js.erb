@@ -1,0 +1,14 @@
+<% if @expense.valid? %>
+  $('#expense-modal').modal('hide');
+  $('table tbody').html(' <%= j render "filtered_expenses", expense: @expense %>');
+  $('#index-values').html("<%= j render 'index_data_filtered' %>");
+  $('body').append('<%= j render "alert", message: message %>')
+<% else %>
+  $('.help-error').remove();
+  $('.form-group').removeClass('has-error');
+
+  <% @expense.errors.each do |field, messages| %>
+    $('#expense_<%= field %>').parent().addClass('has-error')
+      .append('<span class="help-block help-error"><%= messages %></span>');
+  <% end %>
+<% end %>
